@@ -36,6 +36,8 @@ class LMS_API_CLIENT
 	private $_port;
 	private $result = NULL;
 	private $_error = false;
+	private $_autosend = true;
+	
 	var $errors;
 	private $_request = array();
 	
@@ -49,19 +51,33 @@ class LMS_API_CLIENT
 	    $this->_url = $url;
 	}
 	
-	public function AddRequest($req,$opt=NULL)
+	public function Request($req,$opt=NULL)
 	{
+	    if ($this->_autosend) $this->InitRequest();
+	    
 	    if (is_null($opt)) $opt = array();
 	    $this->_request['request'][] = array(
 					'name' =>$req,
 					'opt' => $opt
 				);
-	    return (sizeof($this->_request['request'])-1);
+	    if ($this->_autosend) 
+	    {
+		$this->send();
+		return $this->result[0];
+	    }
+	    else
+		return (sizeof($this->_request['request'])-1);
 	}
 	
 	public function GetResult()
 	{
 	    return $this->result;
+	}
+	
+	public function SetAutoSend($auto = true)
+	{
+	    if (!is_bool($auto)) $auto = true;
+	    $this->_autosend = $auto;
 	}
 	
 	public function InitRequest()

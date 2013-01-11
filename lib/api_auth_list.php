@@ -22,6 +22,14 @@ $API_AUTH['sylwek2'] = array(
 			'remoteip'	=> '127.0.0.1' // ograniczenie tylko do maszyny lokalnej
 			);
 */
+$API_AUTH['sylwek'] = array(
+	'passwd'	=> sha1('misiek'), 	// hasło
+	'domain'	=> 'PATI.NET',		// domena, trzeci człon zabezpieczający
+	'active'	=> true,		// czy konto aktywne
+	'secretkey'	=> 'misiek1234',	// klucz szyfrujący transmisję
+	'remoteip'	=> NULL	// dozwolone host z jakiego klient może się logować, jeżeli nie ograniczami to warość = NULL
+);
+
 
 
 ?>

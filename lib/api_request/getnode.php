@@ -8,10 +8,9 @@ foreach($options as $item => $key)
     switch (strtolower($item))
     {
 	case 'id'		: $id = $key; break;
-	case 'count'		: $count = $key; break;
     }
 }
-$_result = $LMS->GetCustomerNodes($id,$count); 
+$_result = $LMS->GetNode($id); 
 
 
 ?>

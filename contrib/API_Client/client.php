@@ -38,20 +38,57 @@ $apifile = dirname(__FILE__).'/LMS.apiclient.class.php';  // ścieżka do klasy
 if (file_exists($apifile)) require_once($apifile); else die('brak pliku '.$apifile);
 
 // login, hasło, domena, klucz szyfrujacy dane, url, port - jeżeli np. mam to na virtualce
-$API = new LMS_API_CLIENT('login','haslo','domena','klucz_szyfrujacy','http://www.moj_lms.pl/api.php',NULL);
+$API = new LMS_API_CLIENT('login','haslo','DOMENA.NET','klucz_szyfrujacy','http://mojlms.pl/api.php',NULL);
+
+
+// PIERWSZY SPOSÓB POBIERANIA DANYCH, wolniej działa przy dużej ilości zapytań, dobre rozwiązanie jak potrzebujemy wysłać pojedyncze zapytanie
+// każde zapytanie jest odrazu wysyłane , a wynikiem jest odpowiedź z serwera w postaci tablicy
+// Domyślne ustawienie dla AutoSend = TRUE
+
+//$API->SetAutoSend(true); // nie musimy ustawiać dla true, chyba że po drodze przestawiny tylko na false 
+
+$wynik = array();
+$wynik[] = $API->Request('getremote');
+$wynik[] = $API->request('getcustomerbalance',array('id'=>1,'totime'=>time()-86400)); // id klienta
+$wynik[] = $API->request('getcustomerbalancelist',array('id'=>1,'totime'=>time()-86400)); // id klienta
+$wynik[] = $API->request('getcustomername',array('id'=>1));  // id klienta
+$wynik[] = $API->request('getcustomer',array('id'=>1));  // id klienta
+$wynik[] = $API->request('getcustomernodes',array('id'=>1)); // id klienta
+$wynik[] = $API->request('getcustomernames',null);
+$wynik[] = $API->request('getnode',array('id'=>2));
+
+
+echo "<pre>";
+print_r($wynik);
+echo "</pre>";
+
+
+
+
+// ****************************************************************************************************************************
+// DRUGI SPOSÓB - HURTOWE WYSŁANIE ZAPYTAŃ , szybciej działa w takich przypadkach
 
 $API->InitRequest(); // inicjujemy
 
-// $z1, $z2 itd to jest ID zadanego requesta,
-$z1 = $API -> AddRequest('getcustomerinfo',array('id'=>'3')); // zadajemy pytania 
-$z2 = $API -> AddRequest('getuserinfo',array('id'=>'1'));
-$z3 = $API -> AddRequest('getremote');
+$API->SetAutoSend(false);
+
+$wynik = array();
+$balance = $API->request('getcustomerbalance',array('id'=>1,'totime'=>time()-86400)); // id klienta
+$balancelist = $API->request('getcustomerbalancelist',array('id'=>1,'totime'=>time()-86400)); // id klienta
+$customername = $API->request('getcustomername',array('id'=>1));  // id klienta
+$customerinfo = $API->request('getcustomer',array('id'=>1));  // id klienta
+$customernodes = $API->request('getcustomernodes',array('id'=>1)); // id klienta
+$customernode = $API->request('getnode',array('id'=>2)); // id komputera
 
 $API->Send(); // wysyłamy żądanie do serwera
 $result = $API->GetResult(); // pobieramy dane do tablicy
 
-echo 'getremote : '.$result[$z3].'<br><br>'; // odczyt konkretnego requesta
-echo "<pre>"; print_r($result); echo "</pre>"; // wysietlamy cala tablice
+$API->SetAutoSend(true); // włączamy ponownie automatyczne wysyłanie zapytań
+
+echo 'Klient: '.$result[$customername].'<br>';
+echo 'Bilans: '.$result[$balance].'<br>';
+echo "Komputery: <pre>"; print_r($result[$customernodes]); echo "</pre> <br>";
+echo "Info o kompie: <pre>"; print_r($result[$customernode]); echo "</pre> <br>";
 
 // a dalej już robimy z wynikiem co chcemy
 

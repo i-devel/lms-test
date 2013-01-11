@@ -2289,7 +2289,7 @@ class LMS {
 
 	function NodeSetWarn($id, $warning = FALSE) {
 		
-		$this->DB->BeginTrans();
+//		$this->DB->BeginTrans();
 		if (SYSLOG) {
 		    if (is_array($id)) {
 			for ($i=0;$i<sizeof($id);$i++) {
@@ -2303,7 +2303,7 @@ class LMS {
 		}
 		$return = $this->DB->Execute('UPDATE nodes SET warning = ? WHERE id IN ('
 			. (is_array($id) ? implode(',', $id) : $id) . ')', array($warning ? 1 : 0));
-		$this->DB->CommitTrans();
+//		$this->DB->CommitTrans();
 		return $return;
 	}
 

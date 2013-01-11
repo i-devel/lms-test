@@ -35,7 +35,7 @@ $changelog = array(
 	array(
 	    'data'	=> '2013/01/11',
 	    'status'	=> 'add',
-	    'opis'	=> 'API - dodano API dla LMS z klikoma przykładowymi requestami, które w bardzo prosty sposób można samemu dodać. Więcej info w contrib/API_Client',
+	    'opis'	=> 'API - dodano API dla LMS z klikoma przykładowymi requestami. Requesty w bardzo prosty sposób można samemu stworzyć zgodnie z własnymi potrzebami. Więcej info w contrib/API_Client',
 	),
 	array(
 	    'data'	=> '2012/01/11',
@@ -45,7 +45,7 @@ $changelog = array(
 	array(
 	    'data'	=> '2013/01/10',
 	    'status'	=> 'add',
-	    'opis'	=> 'dodano trochę inny LIVE PING, dostępny na liście komputerów , w karcie klienta: box komputery i w karcie urządzenia sieciowego.<br>Należy do /etc/sudoers dodać wpis : www-data ALL = NOPASSWD: /var/www/lms/bin/lms-monitoring.pl (wpis przykładowy dla debian/ubuntu) podając prawidłową ścieżkę dla tego pliku, należy również sprawdzić i ew. poprawić ścieżkę w konfiguracji monitoringu opcja <b>test_script_dir</b><br>LIVE PING można wyłączyć zmieniając wartość z 1 na 0 w konfiguracji monitoringu opcja live_ping.',
+	    'opis'	=> 'dodano nowy rodzaj LIVE PING, dostępny na liście komputerów , w karcie klienta: box komputery i w karcie urządzenia sieciowego.<br>Należy do /etc/sudoers dodać wpis : www-data ALL = NOPASSWD: /var/www/lms/bin/lms-monitoring.pl (wpis przykładowy dla debian/ubuntu) podając prawidłową ścieżkę dla tego pliku, należy również sprawdzić i ew. poprawić ścieżkę w konfiguracji monitoringu opcja <b>test_script_dir</b><br>LIVE PING można wyłączyć zmieniając wartość z 1 na 0 w konfiguracji monitoringu opcja live_ping.',
 	),
 	array(
 	    'data'	=> '2013/01/10',
@@ -75,7 +75,7 @@ $changelog = array(
 	array(
 	    'data'	=> '2013/01/03',
 	    'status'	=> 'add',
-	    'opis'	=> 'dodano możliwość prowadzenia historii przyznawanych adresów IP lokalnych i publicznych, włączenie / wyłączenie logowania konfigurujemy w UI sekcja phpui , opcja iphistory , domyślne ustawienie: 1',
+	    'opis'	=> 'doszła możliwość prowadzenia historii przyznawanych adresów IP lokalnych i publicznych, włączenie / wyłączenie logowania konfigurujemy w UI sekcja phpui , opcja iphistory , domyślne ustawienie: 1',
 	),
 	array(
 	    'data'	=> '2013/01/02',
@@ -85,7 +85,7 @@ $changelog = array(
 	array(
 	    'data'	=> '2013/01/01',
 	    'status'	=> 'add',
-	    'opis'	=> 'dodano zmienną konfiguracyjną installation_name w sekcji phpui. Nazwa instalacji wyświetlana będzie w oknie logowania, w stopce i w prawym górnym rogu',
+	    'opis'	=> 'dodano nową zmienną konfiguracyjną installation_name w sekcji phpui. Nazwa instalacji wyświetlana będzie w oknie logowania, w stopce i w prawym górnym rogu',
 	),
 	array(
 	    'data'	=> '2013/01/01',
@@ -100,7 +100,7 @@ $changelog = array(
 	array(
 	    'data'	=> '2012/12/31',
 	    'status'	=> 'add',
-	    'opis'	=> 'dodano możliwość wyłączenia starych taryf',
+	    'opis'	=> 'doszła możliwość wyłączenia starych taryf',
 	),
 	array(
 	    'data'	=> '2012/12/30',
