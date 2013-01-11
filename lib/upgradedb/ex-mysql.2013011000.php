@@ -25,6 +25,7 @@ $DB->BeginTrans();
 
 $DB->Execute("ALTER TABLE documents ADD INDEX ( reference ); ");
 $DB->addconfig('invoices','default_type_of_documents','');
+$DB->addconfig('monit','live_ping','1');
 
 $DB->Execute("DROP VIEW monit_vnodes;");
 

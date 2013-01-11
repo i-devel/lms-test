@@ -311,6 +311,7 @@
 	</TR>
 	<TR CLASS="LIGHT">
 		<TD style="width: 100%; text-align: right;" CLASS="FBOTTOMU" COLSPAN="3">
+		{if get_conf('monit.live_ping')}<a href="javascript:void(0);" onclick="window.open('?m=nodeping&packetsize=64&ip={$nodeinfo.ip}','pingnode{$nodeinfo.ip}','width=400,height=450')" {tip text="Pinguj urzadzenie"}>Live Ping <img src="img/ping.gif" alt=""></a>&nbsp;{/if}
 			<A HREF="?m=nodeedit&id={$nodeinfo.id}" ACCESSKEY="E">{trans("Edit")} <IMG SRC="img/edit.gif" ALT=""></A>
 			<A HREF="?m=nodedel&id={$nodeinfo.id}" onClick="return confirmLink(this, '{t a=$nodeinfo.name}Are you sure, you want to remove node \'$a\' from database?{/t}')">{trans("Delete")} <IMG SRC="img/delete.gif" ALT=""></A>
 		</TD>

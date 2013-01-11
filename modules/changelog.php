@@ -33,6 +33,21 @@ $changelog = array(
 	),
 */
 	array(
+	    'data'	=> '2013/01/11',
+	    'status'	=> 'add',
+	    'opis'	=> 'API - dodano API dla LMS z klikoma przykładowymi requestami, które w bardzo prosty sposób można samemu dodać. Więcej info w contrib/API_Client',
+	),
+	array(
+	    'data'	=> '2012/01/11',
+	    'status'	=> 'fix',
+	    'opis'	=> 'fix - poprawiono iphistory - nie aktualizował danych przy kasowaniu całego konta klienta',
+	),
+	array(
+	    'data'	=> '2013/01/10',
+	    'status'	=> 'add',
+	    'opis'	=> 'dodano trochę inny LIVE PING, dostępny na liście komputerów , w karcie klienta: box komputery i w karcie urządzenia sieciowego.<br>Należy do /etc/sudoers dodać wpis : www-data ALL = NOPASSWD: /var/www/lms/bin/lms-monitoring.pl (wpis przykładowy dla debian/ubuntu) podając prawidłową ścieżkę dla tego pliku, należy również sprawdzić i ew. poprawić ścieżkę w konfiguracji monitoringu opcja <b>test_script_dir</b><br>LIVE PING można wyłączyć zmieniając wartość z 1 na 0 w konfiguracji monitoringu opcja live_ping.',
+	),
+	array(
 	    'data'	=> '2013/01/10',
 	    'status'	=> 'add',
 	    'opis'	=> 'dodano zmienną <b>default_type_of_documents</b> w sekcji <b>invoices</b><br>Zmienna określa nam domyślny typ dokumentu przy dodawaniu nowego zobowiązania/taryfy dla klienta, DEFAULT: <br>dozwolone wartości: <Br>invoice - faktura<br>proforma - faktura proforma<br>pusta wartość - tylko naliczenie opłat',

@@ -685,9 +685,9 @@ function GetConfigList($order='var,asc', $section='', $search='')
 				switch($item['var'])
 				{
 					case 'active_monitoring'	: $config[$idx]['description'] = 'czy monitorować hosty,wartość globalna, jeżeli ustawimy 0 to nie będą przeprowadzane testy. DEFAULT.:1';break;
-					case 'lms_password'		: $config[$idx]['description'] = 'Hasło użytkownika';break;
-					case 'lms_url'			: $config[$idx]['description'] = 'Adres URL do LMS, Domyślnie: http://localhost/lms ';break;
-					case 'lms_user'			: $config[$idx]['description'] = 'Nazwa użytkownika (login)';break;
+//					case 'lms_password'		: $config[$idx]['description'] = 'Hasło użytkownika';break;
+//					case 'lms_url'			: $config[$idx]['description'] = 'Adres URL do LMS, Domyślnie: http://localhost/lms ';break;
+//					case 'lms_user'			: $config[$idx]['description'] = 'Nazwa użytkownika (login)';break;
 					case 'netdev_clear'		: $config[$idx]['description'] = 'Ilość dni trzymanych statystyk testów, starsze wpisy będą kasowane'; break;
 					case 'netdev_test'		: $config[$idx]['description'] = 'Włącz testowanie hostów (urządzeń) sieciowych'; break;
 					case 'netdev_test_port'		: $config[$idx]['description'] = 'Domyślny port dla protokołu tcp'; break;
@@ -722,18 +722,19 @@ function GetConfigList($order='var,asc', $section='', $search='')
 					case 'send_to_gg'		: $config[$idx]['description'] = 'Pozwól na wysyłanie wiadomości przez komunikator Gadu-Gadu. DEFAULT.: 1. Ustawienie globalne'; break;
 					case 'send_to_sms'		: $config[$idx]['description'] = 'Pozwól na wysyłanie informacji poprzez sms. DEFAULT.: 1. Ustawienie Globalne'; break;
 					case 'test_script_dir'		: $config[$idx]['description'] = 'ścieżka do skryptu lms-monitoring.pl<BR><B>DEFAULT:</B> /usr/local/sbin/lms-monitoring.pl';break;
-					case 'img_gen'			: $config[$idx]['description'] = 'automatycznie generuj wykres do obrazka w formacie IP_HOSTA.png, wygenerowane wykresy możemy potem wykorzystać we własnych stronach.<BR>LMS na swoje potrzeby generuje w "locie" wykresy i nie są one powiązane z tą zmienną.<BR><B>DEFAULT:</B> false';break;
-					case 'img_dir'			: $config[$idx]['description'] = 'ścieżka gdzie mają być generowane wykresy dla poszczególnych urządzeń.<BR><B>DEFAULT:</B> /var/www/lms/img/monit';break;
-					case 'img_time'			: $config[$idx]['description'] = 'przedział czasowy wykresu od kiedy ma być wygenerowany do "teraz", podajemy w formacie : -1h -6h -12 -1d -3d itd..<BR><B>DEFAULT:</B> -1d';break;
-					case 'img_width'		: $config[$idx]['description'] = 'szerokość generowanego obrazka w px.<BR><B>DEFAULT:</B> 360';break;
-					case 'img_height'		: $config[$idx]['description'] = 'wysokość generowanego obrazka w px.<BR><B>DEFAULT:</B> 180';break;
-					case 'rrd_dir'			: $config[$idx]['description'] = 'ścieżka zapisu danych dla rrdtool.<BR><B>DEFAULT:</B> /var/www/lms/rrd';break;
-					case 'rrdtool_dir'		: $config[$idx]['description'] = 'ścieżka do skryptu rrdtool<BR><B>DEFAULT:</B> /usr/bin/rrdtool';break;
-					case 'grep_dir'			: $config[$idx]['description'] = 'ścieżka do binarki grep.<BR><B>DEFAULT:</B> /bin/grep';break;
-					case 'awk_dir'			: $config[$idx]['description'] = 'ścieżka do binarki awk.<BR><B>DEFAULT:</B> /usr/bin/awk';break;
+//					case 'img_gen'			: $config[$idx]['description'] = 'automatycznie generuj wykres do obrazka w formacie IP_HOSTA.png, wygenerowane wykresy możemy potem wykorzystać we własnych stronach.<BR>LMS na swoje potrzeby generuje w "locie" wykresy i nie są one powiązane z tą zmienną.<BR><B>DEFAULT:</B> false';break;
+//					case 'img_dir'			: $config[$idx]['description'] = 'ścieżka gdzie mają być generowane wykresy dla poszczególnych urządzeń.<BR><B>DEFAULT:</B> /var/www/lms/img/monit';break;
+//					case 'img_time'			: $config[$idx]['description'] = 'przedział czasowy wykresu od kiedy ma być wygenerowany do "teraz", podajemy w formacie : -1h -6h -12 -1d -3d itd..<BR><B>DEFAULT:</B> -1d';break;
+//					case 'img_width'		: $config[$idx]['description'] = 'szerokość generowanego obrazka w px.<BR><B>DEFAULT:</B> 360';break;
+//					case 'img_height'		: $config[$idx]['description'] = 'wysokość generowanego obrazka w px.<BR><B>DEFAULT:</B> 180';break;
+//					case 'rrd_dir'			: $config[$idx]['description'] = 'ścieżka zapisu danych dla rrdtool.<BR><B>DEFAULT:</B> /var/www/lms/rrd';break;
+//					case 'rrdtool_dir'		: $config[$idx]['description'] = 'ścieżka do skryptu rrdtool<BR><B>DEFAULT:</B> /usr/bin/rrdtool';break;
+//					case 'grep_dir'			: $config[$idx]['description'] = 'ścieżka do binarki grep.<BR><B>DEFAULT:</B> /bin/grep';break;
+//					case 'awk_dir'			: $config[$idx]['description'] = 'ścieżka do binarki awk.<BR><B>DEFAULT:</B> /usr/bin/awk';break;
 					case 'step_test_netdev'		: $config[$idx]['description'] = 'czas w minutach co ile jest robiony test dla urządzeń sieciowych, czas ten <b>musi</b> pokrywać się z czasem odpalania testu przez cron, w przypadku zmiany czasu należy wyczyścić statystyki pomiarów inaczej będą błędy na wykresach<BR><B>DEFAULT:</B> 5';break;
 					case 'step_test_nodes'		: $config[$idx]['description'] = 'czas w minutach co ile jest robiony test dla urządzeń klientów, czas ten <b>musi</b> pokrywać się z czasem odpalania testu przez cron, w przypadku zmiany czasu należy wyczyścić statystyki pomiarów inaczej będą błędy na wykresach<BR><B>DEFAULT:</B> 5';break;
 					case 'step_test_owner'		: $config[$idx]['description'] = 'czas w minutach co ile jest robiony test dla własnych urządzeń, czas ten <b>musi</b> pokrywać się z czasem odpalania testu przez cron, w przypadku zmiany czasu należy wyczyścić statystyki pomiarów inaczej będą błędy na wykresach<BR><B>DEFAULT:</B> 5';break;
+					case 'live_ping'		: $config[$idx]['description'] = 'włącz dodatek LIVE PING DEFAULT: 1';break;
 					
 					default				: $config[$idx]['description'] = 'Nieznana opcja lub brak opisu';break;
 				} //end: monit

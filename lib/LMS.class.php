@@ -624,6 +624,7 @@ class LMS {
 		// nodes
 		$nodes = $this->DB->GetCol('SELECT id FROM nodes WHERE ownerid=?', array($id));
 		if ($nodes) {
+		/*
 			$this->DB->Execute('DELETE FROM nodegroupassignments WHERE nodeid IN (' . join(',', $nodes) . ')');
 			$plugin_data = array();
 			foreach ($nodes as $node)
@@ -631,6 +632,8 @@ class LMS {
 			$this->ExecHook('node_del_before', $plugin_data);
 			$this->DB->Execute('DELETE FROM nodes WHERE ownerid=?', array($id));
 			$this->ExecHook('node_del_after', $plugin_data);
+		*/
+		    for ($i=0; $i< sizeof($nodes); $i++) $this->DeleteNode($nodes[$i]);
 		}
 		// hosting
 		$this->DB->Execute('UPDATE passwd SET ownerid=0 WHERE ownerid=?', array($id));

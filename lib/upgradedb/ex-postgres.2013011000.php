@@ -25,6 +25,7 @@ $DB->BeginTrans();
 
 $DB->Execute("CREATE INDEX documents_reference_idx ON documents (reference); ");
 $DB->addconfig('invoices','default_type_of_documents','');
+$DB->addconfig('monit','live_ping','1');
 
 $DB->Execute("DROP VIEW monit_vnodes;");
 

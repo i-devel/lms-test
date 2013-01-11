@@ -312,6 +312,7 @@ $DEFAULTS = array(
 		'step_test_nodes'	=>5,				// czas w minutach, co ile jest robiony test
 		'step_test_own'		=>5,				// czas w minutach, co ile jest robiony test
 		'test_script_dir'	=>'/usr/local/sbin/lms-monitoring.pl', //scieżka do skryptu perl
+		'live_ping'		=> 1,
 //		'rrdtool_dir'		=>'/usr/bin/rrdtool', 		//scieżka do skryptu rrdtool
 //		'tmp_dir'		=>'/tmp',
 //		'rrd_dir'		=>'/var/www/lms/rrd',		// ścieżka bazy dla rrdttool

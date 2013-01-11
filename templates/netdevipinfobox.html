@@ -172,7 +172,8 @@
 	</TR>
 	<TR CLASS="LIGHT">
 		<TD WIDTH="100%" CLASS="FBOTTOMU" COLSPAN="3" ALIGN="RIGHT">
-			<A HREF="?m=netdevedit&id={$netdevinfo.id}&action=editip&ip={$nodeipdata.id}" ACCESSKEY="E">{trans("Edit")} <IMG SRC="img/edit.gif" ALT=""></A>
+			{if get_conf('monit.live_ping')}<a href="javascript:void(0);" onclick="window.open('?m=nodeping&packetsize=64&ip={$nodeipdata.ip}&netdev={$nodeipdata.id}','pingnode{$nodeipdata.ip}','width=400,height=450')" {tip text="Pinguj urzadzenie"}>Live Ping <img src="img/ping.gif" alt=""></a>&nbsp;{/if}
+			<A HREF="?m=netdevedit&id={$netdevinfo.id}&action=editip&ip={$nodeipdata.id}" ACCESSKEY="E">{trans("Edit")} <IMG SRC="img/edit.gif" ALT=""></A>&nbsp;
 			<A HREF="?m=netdevedit&id={$netdevinfo.id}&action=ipdel&ip={$nodeipdata.id}" onClick="return confirmLink(this, '{t a=$nodeipdata.name}Are you sure, you want to delete address \'$a\' from database?{/t}')">{trans("Delete")} <IMG SRC="img/delete.gif" ALT=""></A>
 		</TD>
 	</TR>	

@@ -36,6 +36,7 @@ exit 0;
 }
 
 if (!$packetsize) { $packetsize=32; }
+if ($packetsize > 1024) {$packetsize = 1024;}
 if (!$typetest) { $typetest="icmp"; }
 if (!$port) { $port=80; }
 
