@@ -37,8 +37,8 @@ ini_set('error_reporting', E_ALL&~E_NOTICE);
 
 // find alternative config files:
 if (is_readable('lms.ini')) $CONFIG_FILE = 'lms.ini';
-elseif (is_readable('/etc/lms/lms.ini')) $CONFIG_FILE = '/etc/lms/lms.ini';
 elseif (is_readable('/etc/lms/lms-'.$_SERVER['HTTP_HOST'].'.ini')) $CONFIG_FILE = '/etc/lms/lms-'.$_SERVER['HTTP_HOST'].'.ini';
+elseif (is_readable('/etc/lms/lms.ini')) $CONFIG_FILE = '/etc/lms/lms.ini';
 elseif (!is_readable($CONFIG_FILE)) die('Unable to read configuration file ['.$CONFIG_FILE.'] !'); 
 
 $CONFIG = (array) parse_ini_file($CONFIG_FILE, true);
