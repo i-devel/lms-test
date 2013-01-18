@@ -76,6 +76,7 @@ $_DBNAME = $CONFIG['database']['database'];
 $_DBDEBUG = (isset($CONFIG['database']['debug']) ? chkconfig($CONFIG['database']['debug']) : FALSE);
 
 require(LIB_DIR.'/LMSDB.php');
+require(LIB_DIR.'/POSTFIXDB.php');
 
 $DB = DBInit($_DBTYPE, $_DBHOST, $_DBUSER, $_DBPASS, $_DBNAME, $_DBDEBUG);
 
@@ -83,6 +84,22 @@ if(!$DB)
 {
 	// can't working without database
 	die();
+}
+
+$_DBPOSTFIXA['type']=$CONFIG['postfix']['type'];
+$_DBPOSTFIXA['host']=$CONFIG['postfix']['host'];
+$_DBPOSTFIXA['user']=$CONFIG['postfix']['user'];
+$_DBPOSTFIXA['password']=$CONFIG['postfix']['password'];
+$_DBPOSTFIXA['database']=$CONFIG['postfix']['database'];
+
+$_DBPOSTFIXB['type']=$CONFIG['postfixb']['type'];
+$_DBPOSTFIXB['host']=$CONFIG['postfixb']['host'];
+$_DBPOSTFIXB['user']=$CONFIG['postfixb']['user'];
+$_DBPOSTFIXB['password']=$CONFIG['postfixb']['password'];
+$_DBPOSTFIXB['database']=$CONFIG['postfixb']['database'];
+
+if($CONFIG['postfix']['type']){
+$POSTFIX_DB = PDBInit(&$_DBPOSTFIXA, &$_DBPOSTFIXB);
 }
 
 // Call any of upgrade process before anything else
@@ -144,6 +161,7 @@ require_once(LIB_DIR.'/accesstable.php');
 require_once(LIB_DIR.'/Session.class.php');
 require_once(LIB_DIR.'/GaduGadu.class.php');
 require_once(LIB_DIR.'/LMS.Hiperus.class.php');
+require_once(LIB_DIR.'/POSTFIX.class.php');
 
 // Initialize Session, Auth and LMS classes
 
@@ -153,6 +171,9 @@ $LMS = new LMS($DB, $AUTH, $CONFIG);
 $LMS->ui_lang = $_ui_language;
 $LMS->lang = $_language;
 $GG = new rfGG(GG_VER_77);
+if($POSTFIX_DB){
+$POSTFIX = new POSTFIX($LMS,$POSTFIX_DB,$AUTH,$CONFIG);
+}
 // Set some template and layout variables
 
 $SMARTY->template_dir = SMARTY_TEMPLATES_DIR;

@@ -1,0 +1,22 @@
+{include file="header.html"}
+<H1>{$layout.pagetitle}</H1>
+<FORM NAME="domainadd" ID="domainadd" METHOD="POST" ACTION="?m=postfix_domainadd">
+<INPUT type="submit" class="hiddenbtn">
+<TABLE WIDTH="100%" CELLPADDING="3">
+	<TR CLASS="LIGHT">
+		<TD WIDTH="15%" class="ftl" nowrap >
+			<IMG SRC="img/node.gif" ALT="{t}Name:{/t}">{trans("Domain:")}
+		</TD>
+		<TD WIDTH="85%" class="ftr">
+			<INPUT TYPE="TEXT" NAME="domainadd[name]" VALUE="{$domainadd.name}" MAXLENGTH="50" size="50" {tip text="Enter domain" trigger="name" bold=1}>
+		</TD>
+	</TR>
+	<TR CLASS="LIGHT">
+		<TD WIDTH="100%" CLASS="FBOTTOMU" COLSPAN="2" ALIGN="RIGHT">
+			<A HREF="javascript:document.domainadd.submit();" ACCESSKEY="s">{trans("Submit")} <IMG SRC="img/save.gif" alt=""></A>
+			<A href="?m=postfix_domainlist">{trans("Cancel")} <img src="img/cancel.gif" alt=""></A><BR>
+			<INPUT type="checkbox" name="domainadd[reuse]" id="domainadd[reuse]" value="ON" {if $domainadd.reuse}checked{/if}><A HREF="javascript:checkElement('domainadd[reuse]')"> {trans("Display this form again, when this customer is saved")}</A>
+		</TD>
+	</TR>
+</TABLE>
+</FORM>

@@ -1,0 +1,31 @@
+{include file="header.html"}
+<H1>{$layout.pagetitle}</H1>
+<FORM NAME="forwardadd" ID="forwardadd" METHOD="POST" ACTION="?m=postfix_forwardadd">
+<INPUT type="submit" class="hiddenbtn">
+<TABLE WIDTH="100%" CELLPADDING="3">
+	<TR CLASS="LIGHT">
+		<TD WIDTH="1%" class="ftl">
+			{trans("Source:")}
+		</TD>
+		<TD WIDTH="99%" class="ftr">
+			<INPUT TYPE="TEXT" NAME="forwardadd[source]" VALUE="{$forwardadd.source}" MAXLENGTH="50" size="50" {tip text="Enter source" trigger="source" bold=1}>
+		</TD>
+	</TR>
+	<TR CLASS="LIGHT">
+		<TD WIDTH="1%" class="fleft">
+			{trans("Destination:")}
+		</TD>
+		<TD WIDTH="99%" class="fright">
+			<INPUT TYPE="TEXT" NAME="forwardadd[destination]" VALUE="{$forwardadd.destination}" MAXLENGTH="50" size="50" {tip text="Enter destination" trigger="destination" bold=1}>
+		</TD>
+	</TR>
+	<TR CLASS="LIGHT">
+		<TD WIDTH="100%" CLASS="FBOTTOMU" COLSPAN="2" ALIGN="RIGHT">
+			<A HREF="javascript:document.forwardadd.submit();" ACCESSKEY="s">{trans("Submit")}
+			<IMG SRC="img/save.gif" alt=""></A>
+			<A href="?m=postfix_forwardlist">{trans("Cancel")} <img src="img/cancel.gif" alt=""></A><BR>
+			<INPUT type="checkbox" name="forwardadd[reuse]" id="forwardadd[reuse]" value="ON" {if $forwardadd.reuse}checked{/if}><A HREF="javascript:checkElement('forwardadd[reuse]')"> {trans("Display this form again, when this customer is saved")}</A>
+		</TD>
+	</TR>
+</TABLE>
+</FORM>

@@ -662,6 +662,53 @@ $menu = array(
 			),
 		),
 
+		array(
+			'name' => 'Postfix',
+			'img' =>'post.gif',
+			'link' =>'',
+			'tip' => '',
+			'accesskey' =>'',
+			'prio' =>36,
+			'submenu' => array(
+				array(
+					'name' => trans('Users list'),
+					'link' => '?m=postfix_userslist',
+					'tip' => trans('Postfix users list'),
+					'prio'=>'10'
+				),
+				array(
+					'name' => trans('Add user'),
+					'link' => '?m=postfix_useradd',
+					'tip' => trans('Add new postfix user'),
+					'prio'=>'20'
+				),
+				array(
+					'name' => trans('Domain list'),
+					'link' => '?m=postfix_domainlist',
+					'tip' => trans('Postfix domail list'),
+					'prio'=>'30'
+				),
+				array(
+					'name' => trans('Add domain'),
+					'link' => '?m=postfix_domainadd',
+					'tip' => trans('Add Postfix domain'),
+					'prio'=>'40'
+				),
+				array(
+					'name' => trans('Forwarding list'),
+					'link' => '?m=postfix_forwardlist',
+					'tip' => trans('Postfix forwarding list'),
+					'prio'=>'50'
+				),
+				array(
+					'name' => trans('Add forwarding'),
+					'link' => '?m=postfix_forwardadd',
+					'tip' => trans('Add postfix forwarding'),
+					'prio'=>'60'
+				),
+			),
+		),
+
 		'reload' => array(
 			'name' => trans('Reload'),
 			'img' =>'reload.gif',

@@ -1,0 +1,32 @@
+<!--SNMP by Sylwester Zdanowski v0.1-->
+{include file="header.html"}
+<H1>{$layout.pagetitle}</H1>
+<FORM NAME="useredit" ID="useredit" METHOD="POST" ACTION="?m=postfix_useredit&save=1">
+<INPUT type="submit" class="hiddenbtn">
+<INPUT type="hidden" name="useredit[identifier]" value="{$useredit.email}">
+<TABLE WIDTH="100%" CELLPADDING="3">
+	<TR CLASS="LIGHT">
+		<TD WIDTH="10%" CLASS="FLEFTU">
+			<IMG SRC="img/customer.gif" ALT="{trans("e-mail:")}">{trans("e-mail:")}
+		</TD>
+		<TD WIDTH="90%" CLASS="FRIGHTU">
+			<INPUT TYPE="TEXT" NAME="useredit[email]" VALUE="{$useredit.email}" MAXLENGTH="32" size="30" {tip text="Enter e-mail" trigger="name" bold=1}>
+		</TD>
+	</TR>
+	<TR CLASS="LIGHT">
+		<TD WIDTH="10%" CLASS="FLEFTU">
+			<IMG SRC="img/pass.gif" ALT="{trans("Password:")}">{trans("Password:")}
+		</TD>
+		<TD WIDTH="90%" CLASS="FRIGHTU">
+			<INPUT TYPE="password" NAME="useredit[password]" VALUE="{$useredit.password}" MAXLENGTH="32" size="30" {tip text="{trans("Enter password")}" trigger="name" bold=1}>
+		</TD>
+	</TR>
+
+	<TR CLASS="DARK">
+		<TD WIDTH="100%" CLASS="FBOTTOMU" COLSPAN="2" ALIGN="RIGHT">
+
+			<A HREF="javascript:document.useredit.submit();" ACCESSKEY="s">{t}Submit{/t} <IMG SRC="img/save.gif" alt=""></A>
+			
+		</TD>
+	</TR>
+</TABLE></FORM>

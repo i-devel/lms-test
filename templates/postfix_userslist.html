@@ -1,0 +1,72 @@
+{include file="header.html"}
+<H1>{$layout.pagetitle}</H1>
+<P>
+<TABLE cellpadding="3" WIDTH="100%">
+	<TR class="dark" {tip text="Click on column name to change sorting order"}>
+		<TD width="20%" class="fleftu">
+			<a href="?m={$layout.module}&o={if $listdata.direction eq "asc"}desc{/if}">{trans("E-mail:")}</A></B> {if $listdata.order eq "email"}<IMG SRC="img/{if $listdata.direction eq "desc"}asc{else}desc{/if}_order.gif" alt="">{/if}<BR>
+		</TD>
+		<TD width="10%" class="frightu" ALIGN="right" VALIGN="TOP" NOWRAP>
+			{trans("Options:")}
+		</TD>
+	</TR>
+	<TR CLASS="DARK">
+		<TD CLASS="fall" colspan="7">
+			<FORM METHOD="GET" ACTION="?m={$layout.module}" NAME="choosefilter">
+				<INPUT type="submit" class="hiddenbtn">
+				<INPUT TYPE="HIDDEN" NAME="m" VALUE="{$layout.module}">
+				<INPUT TYPE="HIDDEN" NAME="page" VALUE="1">
+				<B>{trans("Filter:")}</B>
+				<NOBR>{trans("Email:")}
+				<input type="text" name="searchmail" value="{$listdata.email}"> 
+				<A href="javascript:document.choosefilter.submit();">
+				{trans("Search")}&raquo;&raquo;&raquo;</a>
+			</FORM>
+		</TD>
+	</TR>
+	{if $listdata.total != 0}
+	<TR CLASS="DARK">
+		<TD COLSPAN="4" CLASS="FALL">
+			{include file="scroller.html" loop=$userslist}
+		</TD>
+	</TR>
+	{/if}	
+	{cycle values="light,lucid" print=false}
+	{section name=userslist loop=$userslist start=$start max=$pagelimit}
+	<TR class="{cycle}" onmouseover="addClass(this, 'highlight')" onmouseout="removeClass(this, 'highlight')">
+		<TD class="fleft" valign="top">
+			{$userslist[userslist].email}
+		</TD>
+		<TD align="right" class="fright">
+			<A HREF="?m=postfix_useredit&email={$userslist[userslist].email}"><IMG SRC="img/edit.gif" alt="[ {t}Edit{/t} ]" title="[ {t}Edit{/t} ]"></A>
+			<A HREF="?m=postfix_userdel&email={$userslist[userslist].email}" onClick="return confirmLink(this,'{t}Are you sure, you want to delete that forwarding?{/t}');"><IMG SRC="img/delete.gif" alt="[ {t}Delete{/t} ]" title="[ {t}Delete{/t} ]"></A>			
+		</TD>
+	</TR>
+	{sectionelse}
+	<TR>
+		<TD colspan="3" align="center" class="flr">
+			<p>&nbsp;</p>
+			<p><B>{trans("No Users")}</B></p>
+			<p>&nbsp;</p>
+		</TD>
+	</TR>
+	{/section}
+	{if $listdata.total != 0}
+	<TR CLASS="DARK">
+		<TD COLSPAN="4" CLASS="FALL">
+			{include file="scroller.html" loop=$userslist}
+		</TD>
+	</TR>
+	{/if}	
+	<TR class="light">
+		<TD class="fleftu" align="right">
+			&nbsp;
+		</TD>
+
+		<TD class="frightu" align="right" valign="top" colspan="3">
+		
+		</TD>
+	</TR>
+</TABLE>
+</P>
+{include file="footer.html"}
