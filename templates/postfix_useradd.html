@@ -1,0 +1,31 @@
+{include file="header.html"}
+<H1>{$layout.pagetitle}</H1>
+<FORM NAME="useradd" ID="useradd" METHOD="POST" ACTION="?m=postfix_useradd">
+<INPUT type="submit" class="hiddenbtn">
+<TABLE WIDTH="100%" CELLPADDING="3">
+	<TR CLASS="LIGHT">
+		<TD WIDTH="15%" class="ftl" nowrap >
+			<IMG SRC="img/users.gif" ALT="{trans("Name:")}">{trans("E-mail")}
+		</TD>
+		<TD WIDTH="85%" class="ftr">
+			<INPUT TYPE="TEXT" NAME="useradd[email]" VALUE="{$useradd.email}" MAXLENGTH="50" size="50" {tip text="Enter e-mail address" trigger="email" bold=1}>
+		</TD>
+	</TR>
+	<TR CLASS="LIGHT">
+		<TD WIDTH="15%" class="fleft" nowrap>
+			<IMG SRC="img/pass.gif" ALT="{trans("Password:")}">{trans("Password:")}
+		</TD>
+		<TD WIDTH="85%" class="fright">
+			<INPUT TYPE="password" NAME="useradd[password]" VALUE="{$useradd.password}" MAXLENGTH="50" size="50" {tip text="Enter password" trigger="password" bold=1}>
+		</TD>
+	</TR>
+	<TR class="light">
+		<TD width="100%" colspan="2" class="fbottomu"  align="right">
+			<A HREF="javascript:document.useradd.submit();" ACCESSKEY="s">{trans("Submit")}
+				<IMG SRC="img/save.gif" alt=""></A>
+			<A href="?m=postfix_userslist">{trans("Cancel")} <img src="img/cancel.gif" alt=""></A><BR>
+			<INPUT type="checkbox" name="useradd[reuse]" id="useradd[reuse]" value="ON" {if $useradd.reuse}checked{/if}><A HREF="javascript:checkElement('customeradd[reuse]')"> {trans("Display this form again, when this customer is saved")}</A>
+		</TD>
+	</TR>
+</TABLE>
+</FORM>

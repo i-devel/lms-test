@@ -1,0 +1,70 @@
+{include file="header.html"}
+<H1>{$layout.pagetitle}</H1>
+<P>
+<TABLE cellpadding="3" WIDTH="100%">
+	<TR class="dark" {tip text="Click on column name to change sorting order"}>
+		<TD width="20%" class="fleftu">
+<a href="?m={$layout.module}&o={if $listdata.direction eq "asc"}desc{/if}">{trans("Domain:")}</A></B> <IMG SRC="img/{if $listdata.direction eq "desc"}asc{else}desc{/if}_order.gif" alt="">
+		</TD>
+		<TD width="10%" class="frightu" ALIGN="right" VALIGN="TOP" NOWRAP>
+			{t}Options:{/t}
+		</TD>
+	</TR>
+	<TR CLASS="DARK">
+		<TD CLASS="fall" colspan="7">
+			<FORM METHOD="GET" ACTION="?m={$layout.module}" NAME="choosefilter">
+				<INPUT type="submit" class="hiddenbtn">
+				<INPUT TYPE="HIDDEN" NAME="m" VALUE="{$layout.module}">
+				<INPUT TYPE="HIDDEN" NAME="page" VALUE="1">
+				<B>{trans("Filter:")}</B>
+				<NOBR>{trans("Domain:")}
+				<input type="text" name="searchdomain" value="{$listdata.searchdomain}"> 
+				<A href="javascript:document.choosefilter.submit();">{trans("Search")}&raquo;&raquo;&raquo;</a>
+			</FORM>
+		</TD>
+	</TR>
+	{if $listdata.total != 0}
+	<TR CLASS="DARK">
+		<TD COLSPAN="4" CLASS="FALL">
+			{include file="scroller.html" loop=$listdata}
+		</TD>
+	</TR>
+	{/if}	
+	{cycle values="light,lucid" print=false}
+	{section name=domainlist loop=$domainlist start=$start max=$pagelimit}
+	<TR class="{cycle}" onmouseover="addClass(this, 'highlight')" onmouseout="removeClass(this, 'highlight')">
+		<TD class="fleft" valign="top">
+			{$domainlist[domainlist].domain}
+		</TD>
+		<TD align="right" class="fright">
+			<A HREF="?m=postfix_domaindel&name={$domainlist[domainlist].domain}" onClick="return confirmLink(this,'{trans("Are you sure, you want to delete that domain?")}');"><IMG SRC="img/delete.gif" alt="[ {trans("Delete")} ]" title="[ {trans("Delete")} ]"></A>			
+		</TD>
+	</TR>
+	{sectionelse}
+	<TR>
+		<TD colspan="2" align="center" class="flr">
+			<p>&nbsp;</p>
+			<p><B>{t}No domains{/t}</B></p>
+			<p>&nbsp;</p>
+		</TD>
+	</TR>
+	{/section}
+	{if $listdata.total != 0}
+	<TR CLASS="DARK">
+		<TD COLSPAN="4" CLASS="FALL">
+			{include file="scroller.html" loop=$listdata}
+		</TD>
+	</TR>
+	{/if}	
+	<TR class="light">
+		<TD class="fleftu" align="right">
+			&nbsp;
+		</TD>
+
+		<TD class="frightu" align="right" valign="top" colspan="3">
+		
+		</TD>
+	</TR>
+</TABLE>
+</P>
+{include file="footer.html"}

@@ -1,0 +1,79 @@
+{include file="header.html"}
+<H1>{$layout.pagetitle}</H1>
+<P>
+<TABLE cellpadding="3" WIDTH="100%">
+	<TR class="dark" {tip text="Click on column name to change sorting order"}>
+		<TD width="20%" class="fleftu">
+	<a href="?m={$layout.module}&o=source{if $listdata.direction eq "asc" && $listdata.order eq "source"},desc{/if}">{t}Source:{/t}</A></B> {if $listdata.order eq "source"}<IMG SRC="img/{if $listdata.direction eq "desc"}asc{else}desc{/if}_order.gif" alt="">{/if}<BR>
+		</TD>
+		<TD width="50%" class="fbt">
+	<a href="?m={$layout.module}&o=destination{if $listdata.direction eq "asc" && $listdata.order eq "destination"},desc{/if}">{trans("Destination:")}</A></B> {if $listdata.order eq "destination"}<IMG SRC="img/{if $listdata.direction eq "desc"}asc{else}desc{/if}_order.gif" alt="">{/if}<BR>			
+		</TD>
+		<TD width="10%" class="frightu" ALIGN="right" VALIGN="TOP" NOWRAP>
+			{t}Options:{/t}
+		</TD>
+	</TR>
+	<TR CLASS="DARK">
+		<TD CLASS="fall" colspan="7">
+			<FORM METHOD="GET" ACTION="?m={$layout.module}" NAME="choosefilter">
+				<INPUT type="submit" class="hiddenbtn">
+				<INPUT TYPE="HIDDEN" NAME="m" VALUE="{$layout.module}">
+				<INPUT TYPE="HIDDEN" NAME="page" VALUE="1">
+				<B>{trans("Filter:")}</B>
+				<NOBR>{trans("Source:")}
+				<input type="text" name="source" value="{$listdata.source}">
+				<NOBR>{trans("Destination:")}
+				<input type="text" name="destination" value="{$listdata.destination}">  
+				<A href="javascript:document.choosefilter.submit();">
+					{trans("Search")}&raquo;&raquo;&raquo;</a>
+			</FORM>
+		</TD>
+	</TR>
+	{if $listdata.total != 0}
+	<TR CLASS="DARK">
+		<TD COLSPAN="4" CLASS="FALL">
+			{include file="scroller.html" loop=$listdata}
+		</TD>
+	</TR>
+	{/if}	
+	{cycle values="light,lucid" print=false}
+	{section name=forwardlist loop=$forwardlist start=$start max=$pagelimit}
+	<TR class="{cycle}" onmouseover="addClass(this, 'highlight')" onmouseout="removeClass(this, 'highlight')">
+		<TD class="fleft" valign="top">
+			{$forwardlist[forwardlist].source}
+		</TD>
+		<TD  valign="top">
+			{$forwardlist[forwardlist].destination}
+		</TD>
+		<TD align="right" class="fright">
+			<A HREF="?m=postfix_forwarddel&source={$forwardlist[forwardlist].source}" onClick="return confirmLink(this,'{t}Are you sure, you want to delete that forwarding?{/t}');"><IMG SRC="img/delete.gif" alt="[ {t}Delete{/t} ]" title="[ {t}Delete{/t} ]"></A>			
+		</TD>
+	</TR>
+	{sectionelse}
+	<TR>
+		<TD colspan="3" align="center" class="flr">
+			<p>&nbsp;</p>
+			<p><B>{t}No Forwarding{/t}</B></p>
+			<p>&nbsp;</p>
+		</TD>
+	</TR>
+	{/section}
+	{if $listdata.total != 0}
+	<TR CLASS="DARK">
+		<TD COLSPAN="4" CLASS="FALL">
+			{include file="scroller.html" loop=$listdata}
+		</TD>
+	</TR>
+	{/if}	
+	<TR class="light">
+		<TD class="fleftu" align="right">
+			&nbsp;
+		</TD>
+
+		<TD class="frightu" align="right" valign="top" colspan="3">
+		
+		</TD>
+	</TR>
+</TABLE>
+</P>
+{include file="footer.html"}
