@@ -31,7 +31,60 @@ $changelog = array(
 	    'status'	=> '',
 	    'opis'	=> '',
 	),
+	
 */
+	array(
+	    'data'	=> '2013/02/06',
+	    'status'	=> '',
+	    'opis'	=> '
+	    Dodano nowy Userpanel w oparciu o rozwiązanie firmy ALFA-SYSTEM M.Piwowarski, A. Widera spółka jawna z siedzibą w Knurowie,<br>
+	    który będzie rozwijany wraz z iNET LMS, w UP znalazły się między innymi takie zmiany:<br>
+	    1 - poprawiona grafika w niektórych modułach,<br>
+	    2 - utworzono możliwość edytowania treści 3 box\'ów widocznych z prawej strony na stronie logowania,<br>
+	    3 - doszedł nowy edytowalny box z wiadomością widoczną pod menu w module informacje,<br>
+	    4 - doszła możliwość pingowania komputerów przez klienta w zależności od uprawnień,<br>
+	    5 - doszła możliwość wydrukowania statystyk obciążenia łącza przez klienta w zależności od nadanych uprwnień,<br>
+	    6 - dopisano skrypt wysyłający przypomnienie o ID i PIN, wcześniej był tylko formularz. Klient musi podać adres e-mail i PESEL lub NIP<br>
+	    7 - doszły nowe uprawnienia dla klientów w konfiguracji Userpanlu,<br>
+	    &nbsp;&nbsp;&nbsp;a) PING - klient może przeprowadzić test ping swoich komputerów<br>
+	    &nbsp;&nbsp;&nbsp;b) Wydruk statystyk obciążenia łącza',
+	),
+	array(
+	    'data'	=> '2013/01/28',
+	    'status'	=> 'add',
+	    'opis'	=> 'modyfikacja funkcji odpowiedzialnej za tworzenie kopii bazy danych, tworzony jest dodatkowy plik z zapytaniami naprawiającymi index\'y po ręcznym przywróceniu bazy danych z shell. Dodatkowy plik ma zastosowanie tylko dla bazy Postgres i ma za zadanie ułatwić życie. Listę tabel które nie posiadają auto_increment / sequence przeniesiono do tablicy $TABLENAME_NOINDEX w lib/definitions.php',
+	),
+	array(
+	    'data'	=> '2013/01/28',
+	    'status'	=> 'fix',
+	    'opis'	=> 'poprawiono bład przy tworzeniu kopii bazy danych, błąd dotyczył nieuwzględnienia kluczy obcych dla tabel związanych z terytem, co powodowało błedy przy imporcie danych do LMS, jeżeli mieliśmy zaimportowaną bazę lokalizacji TERYT. ',
+	),
+	array(
+	    'data'	=> '2013/01/28',
+	    'status'	=> 'add',
+	    'opis'	=> '
+	    Dołączono plugin lms-sendinvoiceswithpostivo firmy POSTIVO.PL który umożliwia automatyczną wysyłkę wystawionych w systemie LMS faktur VAT w formie papierowej do klientów.<br>
+	    Zanika potrzeba samodzielnego drukowania dokumentów, które maja zostać wysłane, adresowania kopert, a także tracenia czasu podczas wizyt w urzędach pocztowych.<br>
+	    Opis konfiguracji i instalacji znajduje sie w doc/README-postivo.txt, więcej informacji można znaleźć na <a href="http://postivo.pl/ceny-wysylania-dokumentow-listem" target="_blank">http://postivo.pl/ceny-wysylania-dokumentow-listem</a>',
+	),
+	array(
+	    'data'	=> '2013/01/28',
+	    'status'	=> 'up',
+	    'opis'	=> 'Przebudowa modułu monitoringu. Obecna wersja pozwala nam na zbieranie informacji o połączeniach radiowych z urządzeń Ubiquiti po SNMP i MikroTik po SNMP i API.<br>
+			    Informacje o połączeniu radiowym zbierane z MT po API są rozszerzone o TX/RX CCQ, ACK i Signal Noise. Skrypt łączy się tylko z urządzeniami sieciowymi z których pobiera info, nie łączy się bezpośrednio z żadnym urządzeniem klienta.<br>
+			    Włączenie monitorowania sygnałów Wi-Fi wymaga jedynie odpowiedniej konfiguracji w urządzeniach sieciowych, nie ma potrzeby ręcznego dodawania komputerów do listy monitorowanych urządzeń,
+			    jeżeli będziemy chcieli również pingować urz. klienta to musimy już to ręcznie włączyć w Monitoringu -> urządzenia klientów.',
+	),
+	array(
+	    'data'	=> '2013/01/27',
+	    'status'	=> 'add',
+	    'opis'	=> 'Rozpoczęto wprowadzanie indywidualnych ustawień "widoków" w LMS, ustawienia są zapamiętywane automatycznie i przywracane po ponownym zalogowaniu się do systemu.',
+	),
+	array(
+	    'data'	=> '2013/01/14',
+	    'status'	=> 'up',
+	    'opis'	=> 'Poprawka systemu wykrywania wersji językowej',
+	),
 	array(
 	    'data'	=> '2013/01/11',
 	    'status'	=> 'add',
