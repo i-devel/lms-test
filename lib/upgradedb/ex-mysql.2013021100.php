@@ -1,11 +1,9 @@
 <?php
 
 /*
- *  LMS version 1.11-git
+ * LMS iNET
  *
  *  (C) Copyright 2001-2012 LMS Developers
- *
- *  Please, see the doc/AUTHORS for more information about authors!
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License Version 2 as
@@ -21,14 +19,16 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
  *  USA.
  *
- *  $Id$
  */
 
-$USERPANEL->AddModule(trans('Messages'),	// Display name
-		    'messages', 		// Module name - must be the same as directory name
-		    trans('Shows administrative messages'), // Tip 
-		    40,			// Priority
-		    trans('This module is for showing administrative informations for your customer')	// Description
-		    );
+$DB->BeginTrans();
 
+$DB->Execute("DELETE FROM monitnodes WHERE id = '0' ;");
+$DB->Execute("DELETE FROM monitsignal WHERE nodeid = '0';");
+$DB->Execute("DELETE FROM monittime WHERE nodeid = '0' AND ownid = '0';");
+$DB->Execute("DELETE FROM monitwarn WHERE nodeid = '0' AND ownid = '0';");
+
+$DB->Execute("UPDATE dbinfo SET keyvalue = ? WHERE keytype = ?", array('2013021100', 'dbvex'));
+
+$DB->CommitTrans();
 ?>

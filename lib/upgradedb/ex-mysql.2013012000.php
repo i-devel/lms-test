@@ -34,7 +34,7 @@ $DB->Execute("ALTER TABLE monitnodes ADD signaltest TINYINT( 1 ) NOT NULL DEFAUL
 $DB->Execute("ALTER TABLE netdevices ADD monit_nastype INT NOT NULL DEFAULT '0'");
 $DB->Execute("ALTER TABLE netdevices ADD monit_login VARCHAR( 60 ) NOT NULL DEFAULT ''");
 $DB->Execute("ALTER TABLE netdevices ADD monit_passwd VARCHAR( 60 ) NOT NULL DEFAULT ''");
-$DB->Execute("ALTER TABLE netdevices ADD monit_port SMALLINT NOT NULL DEFAULT '8728'");
+$DB->Execute("ALTER TABLE netdevices ADD monit_port SMALLINT NOT NULL DEFAULT '0'");
 $DB->Execute("ALTER TABLE users ADD profiles TEXT NOT NULL DEFAULT '';");
 $DB->Execute("ALTER TABLE up_customers ADD content TEXT NOT NULL DEFAULT '' ;");
 
@@ -65,7 +65,7 @@ $DB->addconfig('monit','owner_test',$tmp['owner_test'],1);
 $DB->addconfig('monit','owner_test_type',$tmp['owner_test_type'],'icmp');
 $DB->addconfig('monit','packetsize',$tmp['packetsize'],'32');
 $DB->addconfig('monit','rrdtool_dir','/usr/bin/rrdtool');
-$DB->addconfig('monit','signal_test','0');
+$DB->addconfig('monit','signal_test','0','0');
 $DB->addconfig('monit','step_test_netdev',$tmp['step_test_netdev'],5);
 $DB->addconfig('monit','step_test_nodes',$tmp['step_test_nodes'],10);
 $DB->addconfig('monit','step_test_owner',$tmp['step_test_owner'],10);

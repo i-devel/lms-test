@@ -37,8 +37,8 @@ ini_set('error_reporting', E_ALL&~E_NOTICE);
 
 // find alternative config files:
 if (is_readable('lms.ini')) $CONFIG_FILE = 'lms.ini';
-elseif (is_readable('/etc/lms/lms-'.$_SERVER['HTTP_HOST'].'.ini')) $CONFIG_FILE = '/etc/lms/lms-'.$_SERVER['HTTP_HOST'].'.ini';
 elseif (is_readable('/etc/lms/lms.ini')) $CONFIG_FILE = '/etc/lms/lms.ini';
+elseif (is_readable('/etc/lms/lms-'.$_SERVER['HTTP_HOST'].'.ini')) $CONFIG_FILE = '/etc/lms/lms-'.$_SERVER['HTTP_HOST'].'.ini';
 elseif (!is_readable($CONFIG_FILE)) die('Unable to read configuration file ['.$CONFIG_FILE.'] !'); 
 
 $CONFIG = (array) parse_ini_file($CONFIG_FILE, true);
@@ -150,6 +150,7 @@ require_once(LIB_DIR.'/Session.class.php');
 require_once(LIB_DIR.'/GaduGadu.class.php');
 require_once(LIB_DIR.'/LMS.Hiperus.class.php');
 
+
 // Initialize Session, Auth and LMS classes
 
 $SESSION = new Session($DB, $CONFIG['phpui']['timeout']);
@@ -159,6 +160,7 @@ $LMS = new LMS($DB, $AUTH, $CONFIG);
 $LMS->ui_lang = $_ui_language;
 $LMS->lang = $_language;
 $GG = new rfGG(GG_VER_77);
+
 
 
 // Set some template and layout variables
@@ -175,7 +177,7 @@ $layout['smarty_version'] = SMARTY_VERSION;
 $layout['hostname'] = hostname();
 $layout['lmsv'] = 'iNET';
 $layout['lmsvr'] = $LMS->_revision.'/'.$AUTH->_revision;
-$layout['lmsvr'] = '1.0.1';
+$layout['lmsvr'] = '1.0.2 test';
 $layout['dberrors'] =& $DB->errors;
 $layout['dbdebug'] = $_DBDEBUG;
 $layout['popup'] = isset($_GET['popup']) ? true : false;
@@ -199,9 +201,6 @@ header('X-Powered-By: LMS/'.$layout['lmsv']);
 
 // Check privileges and execute modules
 if ($AUTH->islogged) {
-	
-	// initialize and load profile settings
-	
 	
 	// Load plugin files and register hook callbacks
 	$plugins = preg_split('/[;,\s\t\n]+/', $CONFIG['phpui']['plugins'], -1, PREG_SPLIT_NO_EMPTY);
