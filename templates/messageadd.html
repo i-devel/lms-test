@@ -61,8 +61,9 @@
 			document.getElementById('mailsender').style.display = 'none';
 			document.getElementById('attachment').style.display = 'none';
 			{if !$message.customerid}
+			var users = document.getElementById('users');
 			document.getElementById('phonenumber').style.display = 'none';
-			document.getElementById('users').style.display = 'none';
+			if (users) users.style.display = 'none';
 			{/if}
 			document.getElementById('smsbody').style.display = 'none';
 			
@@ -77,11 +78,11 @@
 			document.getElementById('mailsender').style.display = 'none';
 			document.getElementById('attachment').style.display = 'none';
 			{if !$message.customerid}
+			var users = document.getElementById('users');
 			document.getElementById('phonenumber').style.display = 'none';
-			document.getElementById('users').style.display = 'none';
+			if (users) users.style.display = 'none';
 			{/if}
 			document.getElementById('smsbody').style.display = 'none';
-			
 			document.getElementById('charscount').style.display = 'none';
 			document.getElementById('gadugadubody').style.display = 'none';
 			document.getElementById('userpanelbody').style.display = '';

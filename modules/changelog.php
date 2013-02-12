@@ -35,11 +35,20 @@ $changelog = array(
 */
 	array(
 	    'data'	=> '2013/02/12',
+	    'status'	=> 'fix',
+	    'opis'	=> 'mała poprawka w messageadd',
+	),
+	array(
+	    'data'	=> '2013/02/12',
+	    'status'	=> 'fix',
+	    'opis'	=> 'poprawka monitoringu',
+	),
+	array(
+	    'data'	=> '2013/02/12',
 	    'status'	=> 'add',
 	    'opis'	=> 'dodano nowy moduł do UP Wiadomości oparty o skrypt udostępniony przez CZEMPIN.NET<br>
 			    Wiadomości "do" UP wysłamy poprzez Wiadomości -> nowa wiadomość, Klient ma swobodny dostęp do poprzednich wiadomości wystałnych w ten sposób,<br>
-			    my natomiast w karcie klienta (box wiadomości) mamy informację kiedy klient przeczytał infrmację pierwszy i ostatni raz oraz czy potwierdził przeczytanie wiadomości.
-			     ',
+			    my natomiast w karcie klienta (box wiadomości) mamy informację kiedy klient przeczytał infrmację pierwszy i ostatni raz oraz czy potwierdził przeczytanie wiadomości.',
 	),
 	array(
 	    'data'	=> '2013/02/12',

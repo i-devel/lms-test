@@ -74,7 +74,7 @@ function GetRecipients($filter, $type=MSG_MAIL)
 	
 	if ($type == MSG_GADUGADU)
 	{
-	    $gadutable = 'JOIN (SELECT uid AS gadugadu, customerid FROM imessengers WHERE type=\'0\' GROUP BY customerid) x ON (x.customerid = c.id) ';
+	    $gadutable = 'JOIN (SELECT uid AS gadugadu, customerid FROM imessengers WHERE type=\'0\' GROUP BY uid,customerid) x ON (x.customerid = c.id) ';
 	}
 
 	$recipients = $LMS->DB->GetAll('SELECT c.id, email, pin, '
@@ -129,7 +129,7 @@ function GetRecipient($customerid, $type=MSG_MAIL)
 	
 	if ($type == MSG_GADUGADU)
 	{
-	    $gadutable = 'JOIN (SELECT uid AS gadugadu, customerid FROM imessengers WHERE type=\'0\' GROUP BY customerid) x ON (x.customerid = c.id) ';
+	    $gadutable = 'JOIN (SELECT uid AS gadugadu, customerid FROM imessengers WHERE type=\'0\' GROUP BY uid,customerid) x ON (x.customerid = c.id) ';
 	}
 
 	return $LMS->DB->GetAll('SELECT c.id, email, pin, '
