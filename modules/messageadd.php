@@ -147,15 +147,45 @@ function GetRecipient($customerid, $type=MSG_MAIL)
 function BodyVars(&$body, $data)
 {
 	global $LMS, $LANGDEFS;
+	
+	    if (!empty($data['customername'])) 
+		$body = str_replace('%customer', $data['customername'], $body);
+	    else
+		$body = str_replace('%customer','', $body);
+	    
+	    if (!empty($data['balance'])) 
+		$body = str_replace('%balance', $data['balance'], $body);
+	    else
+		$body = str_replace('%balance','', $body);
+	
+	    if (!empty($data['id'])) 
+		$body = str_replace('%cid', $data['id'], $body);
+	    else
+		$body = str_replace('%cid','', $body);
+		
+	    if (!empty($data['pin'])) 
+		$body = str_replace('%pin', $data['pin'], $body);
+	    else
+		$body = str_replace('%pin', '', $body);
+	    
+	    if (!empty($data['address'])) 
+		$body = str_replace('%address', $data['address'], $body);
+	    else
+		$body = str_replace('%address','', $body);
+	    
+	    if (!empty($data['postaddress'])) 
+		$body = str_replace('%postaddress', $data['postaddress'], $body);
+	    else
+		$body = str_replace('%postaddress','', $body);
 
-	$body = str_replace('%customer', $data['customername'], $body);
-	$body = str_replace('%balance', $data['balance'], $body);
-	$body = str_replace('%cid', $data['id'], $body);
-	$body = str_replace('%pin', $data['pin'], $body);
-	$body = str_replace('%address', $data['address'], $body);
-	$body = str_replace('%postaddress', $data['postaddress'], $body);
-	if (strpos($body, '%bankaccount') !== false)
-		$body = str_replace('%bankaccount', format_bankaccount(bankaccount($data['id']), $body));
+	    if (bankaccount($data['id'])!='') 
+	    {
+		if (strpos($body, '%bankaccount') !== false)
+		$body = str_replace('%bankaccount', format_bankaccount(bankaccount($data['id'])), $body);
+	    }
+	    else
+		$body = str_replace('%bankaccount','', $body);
+	
 	
 	if(!(strpos($body, '%last_3_in_a_table') === FALSE))
 	{
